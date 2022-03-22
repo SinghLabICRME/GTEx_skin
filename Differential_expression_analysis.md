@@ -2,12 +2,14 @@
 #### Author: "Ahmed S Abouhashem"
 #### Date: "22/03/2022"
 
-### Load libraries in R
-test
+### Download data related files from GTEx Portal using command line
+Gene TPM values
 ```
-library(Seurat) #v3.1.1
-library(dplyr)
-library(Matrix)
-library(ggplot2)
+wget https://storage.googleapis.com/gtex_analysis_v8/rna_seq_data/GTEx_Analysis_2017-06-05_v8_RNASeQCv1.1.9_gene_tpm.gct.gz
 ```
+Sample attributes
+```
+wget https://storage.googleapis.com/gtex_analysis_v8/annotations/GTEx_Analysis_v8_Annotations_SampleAttributesDS.txt
+```
+
 
