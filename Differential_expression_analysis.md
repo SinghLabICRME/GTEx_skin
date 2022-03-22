@@ -122,3 +122,30 @@ for i in range(2,703):
 #Overwrite the existing file and then convert it as a csv file again.
 wb.save(filepath)
 ```
+### Using R: Create a Seurat object including sun exposed skin samples
+Import the counts matrix of sun-exposed skin samples and their metadata metadata
+```
+counts = read.csv('/Skin_samples_tpm.csv', sep = ',',row.names = 1)
+metadata = read.csv('/combined_metadata.csv', sep = ',',row.names = 1)
+```
+subset '-' with '.' in metadata row names to match with column names
+```
+rownames(metadata) = gsub('-','.',rownames(metadata))
+```
+Create a seurat object
+```
+object = CreateSeuratObject(counts = counts, meta.data = metadata,project = 'GTEX-1RB15 GTEx Analysis V8 (dbGaP Accession phs000424.v8.p2)')
+```
+Data log normalization
+```
+object <- NormalizeData(object, normalization.method = "LogNormalize", scale.factor = 1000000)
+```
+Data log normalization
+```
+Differential expression analysis
+```
+Idents(object)='death_type'
+markers = FindMarkers(object, ident.1 = 'Slow',ident.2 = c('Fast Violent','Fast Unexpected'),min.pct = 0.2,logfc.threshold = 0)
+write.csv(markers, "Supplementary file 2 (DEGs).csv")
+```
+### Next, perform the enrichment analysis using g:Profiler using web interface for upregulated and downregulated genes with adjusted p value < 0.01 and log2FC ±0.5 (https://biit.cs.ut.ee/gprofiler/gost).
