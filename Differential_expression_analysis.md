@@ -140,8 +140,6 @@ Data log normalization
 ```
 object <- NormalizeData(object, normalization.method = "LogNormalize", scale.factor = 1000000)
 ```
-Data log normalization
-```
 Differential expression analysis
 ```
 Idents(object)='death_type'
