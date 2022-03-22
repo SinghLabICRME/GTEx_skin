@@ -74,7 +74,7 @@ for i in range(2,982):
 ```
 Next, Add 5 columns to the original metadata file (Individual ID, AGE, SEX, DTHHRDY (hardy.scale) and death_type)
 ```
-filepath = '/mnt/c87fe4a6-44ed-460c-b6a1-d4ebbce31384/Temp/Kanhaiya meeting/Post mortem project/2022/Final/Skin_samples_metadata.xlsx'
+filepath = '/Skin_samples_metadata.xlsx'
 wb = openpyxl.load_workbook(filepath, data_only=True)
 sheet = wb.active
 c = sheet.cell
